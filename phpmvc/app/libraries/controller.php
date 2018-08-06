@@ -28,6 +28,3 @@ class Controller {
 }
 
 ?>
-
-
-Controller!

@@ -7,5 +7,3 @@ require_once 'libraries/Database.php';
 
 
 ?>
-
-What up?
