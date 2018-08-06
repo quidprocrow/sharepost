@@ -1,1 +1,3 @@
-What up?
+<?php
+  require_once '../app/bootstrap.php'
+?>
