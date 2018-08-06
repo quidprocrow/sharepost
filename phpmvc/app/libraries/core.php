@@ -20,10 +20,10 @@
       // Checks the controller folder for a php file corresponding to
       // the first parameter.
       // Using ucwords to ensure the file is uppercase, as is standard.
-      if(file_exists('../app/controllers/' . ucwords($url[0]) . 'php')){
+      if(file_exists('../app/controllers/' . ucwords($url[0]) . '.php')){
 
         // If there is such a controller, make it the current one.
-        $this->$currentController =  ucwords($url[0]);
+        $this->currentController =  ucwords($url[0]);
         // After it becomes the new current controller, remove it from the url array.
         unset($url[0]);
       }
@@ -31,10 +31,10 @@
       // Require the controller.
       // This will be the pages controller or the controller specified through
       // url parameters.
-      require_once '../app/controllers/' .$this->currentController . 'php';
+      require_once '../app/controllers/' . $this->currentController . '.php';
 
       // Instantiate controller.
-      $this->$currentController = new $this->$currentController;
+      $this->currentController = new $this->currentController;
     }
 
     public function getUrl(){
