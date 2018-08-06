@@ -22,7 +22,7 @@ class Controller {
       require_once '../app/views/' . $view . '.php';
     } else {
       // If the file does not exist, show an error.
-      die('View does not exist!');
+      die('Page does not exist!');
     }
   }
 }
