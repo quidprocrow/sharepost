@@ -26,6 +26,23 @@ class Users extends Controller {
     }
   }
 
+  public function login(){
+    // Check for post request.
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      // If it is a post request, process form.
+    } else {
+      $data = [
+        'email' => '',
+        'password' => '',
+        'email_err' => '',
+        'password_err' => '',
+      ];
+
+      // Load the view for registration.
+      $this->view('users/login', $data);
+    }
+  }
+
 }
 
 ?>
