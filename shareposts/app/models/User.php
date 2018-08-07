@@ -44,6 +44,25 @@ class User {
       return false;
     }
   }
+
+  public function login($email, $password) {
+    // Query for the user.
+    $this->db->query('SELECT * FROM users WHERE email = :email');
+    // Bind the value.
+    $this->db->bind(':email', $email);
+    // Grab the row where the user is.
+    $row = $this->db->single();
+
+    // All passwords inputted to the database should be hashed.
+    $hashed_password = $row->password;
+
+    if(password_verify($password, $hashed_password)){
+      return $row;
+    } else {
+      return false;
+    }
+
+  }
 }
 
 ?>

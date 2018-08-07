@@ -124,9 +124,28 @@ class Users extends Controller {
         $data['password_err'] = 'Password must be at least 6 characters.';
       }
 
+      // Check for user email
+      if($this->userModel->findUserByEmail($data['email'])){
+        // User found
+      } else {
+        // User not found!
+        $data['email_err'] = 'No user found.';
+      }
+
       // Check that there are no errors.
       if(empty($data['email_err']) && empty($data['password_err'])){
-        die('SUCCESS!');
+        // Check and set logged in users
+        $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+
+        if($loggedInUser){
+          // Create session.
+        } else {
+          // Password incorrect.
+          $data['password_err'] = 'Password incorrect.';
+          // Reload with errors displayed.
+          $this->view('users/login', $data);
+        }
+
       } else {
         // Reload with errors displayed.
         $this->view('users/login', $data);
