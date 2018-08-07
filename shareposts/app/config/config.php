@@ -4,7 +4,7 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', 'Courage2018');
-define('DB_NAME', 'tmvc');
+define('DB_NAME', 'shareposts');
 
 // Application root.
 define('APPROOT', dirname(dirname(__FILE__)));
