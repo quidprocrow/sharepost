@@ -167,13 +167,34 @@ class Users extends Controller {
 
   public function createUserSession($user){
     // Create session variables.
-    $_SESSION[$user_id] = $user->id;
-    $_SESSION[$user_email] = $user->email;
-    $_SESSION[$user_name] = $user->name;
+    $_SESSION['user_id'] = $user->id;
+    $_SESSION['user_email'] = $user->email;
+    $_SESSION['user_name'] = $user->name;
 
     redirect('pages/index');
   }
 
+
+  public function logout(){
+    // Remove session variables.
+    unset($_SESSION['user_id']);
+    unset($_SESSION['user_email']);
+    unset($_SESSION['user_name']);
+
+    // End the session.
+    session_destroy();
+
+    // Redirec to login page.
+    redirect('users/login');
+  }
+
+  public function isLoggedIn(){
+    if(isset($_SESSION['user_id'])){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 ?>

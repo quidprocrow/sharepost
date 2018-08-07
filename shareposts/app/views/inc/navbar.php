@@ -15,6 +15,17 @@
           </li>
         </ul>
 
+        <!-- If a user is logged in, don't display login / register -->
+        <?php if(isset($_SESSION['user_id'])) : ?>
+          <!-- Show log out.  -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+            </li>
+          </ul>
+
+        <!-- IF they are not, allow them to do so. -->
+        <?php else : ?>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/users/register">Register</a>
@@ -22,6 +33,7 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/users/login">Login</a>
           </li>
+        <?php endif; ?>
         </ul>
       </div>
       </div>
