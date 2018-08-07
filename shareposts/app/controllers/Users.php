@@ -139,6 +139,7 @@ class Users extends Controller {
 
         if($loggedInUser){
           // Create session.
+          $this->createUserSession($loggedInUser);
         } else {
           // Password incorrect.
           $data['password_err'] = 'Password incorrect.';
@@ -162,6 +163,15 @@ class Users extends Controller {
       // Load the view for registration.
       $this->view('users/login', $data);
     }
+  }
+
+  public function createUserSession($user){
+    // Create session variables.
+    $_SESSION[$user_id] = $user->id;
+    $_SESSION[$user_email] = $user->email;
+    $_SESSION[$user_name] = $user->name;
+
+    redirect('pages/index');
   }
 
 }
