@@ -12,7 +12,7 @@ define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL root.
 // This is hard coded, to be used in views.
-define('URLROOT', 'http://localhost/traversy/shareposts/');
+define('URLROOT', 'http://localhost/traversy/shareposts');
 // Remember: this is the root url of the public/ portion.
 
 // Site name.
