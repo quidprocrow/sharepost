@@ -55,7 +55,7 @@ class Users extends Controller {
       && empty($data['password_err']) && empty($data['confirm_password_err'])){
         die('SUCCESS!');
       } else {
-        // Reload with errors displayed. 
+        // Reload with errors displayed.
         $this->view('users/register', $data);
       }
 
@@ -82,6 +82,39 @@ class Users extends Controller {
     // Check for post request.
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
       // If it is a post request, process form.
+
+
+      // Filter the form.
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+      // Initialize data.
+      $data = [
+        'email' => trim($_POST['email']),
+        'password' => trim($_POST['password']),
+        'email_err' => '',
+        'password_err' => ''
+      ];
+
+      // Validate email.
+      if(empty($data['email'])){
+        $data['email_err'] = 'Please enter an email.';
+      }
+
+      // Validate password.
+      if(empty($data['password'])){
+        $data['password_err'] = 'Please enter a password.';
+      } elseif(strlen($data['password']) < 6){
+        $data['password_err'] = 'Password must be at least 6 characters.';
+      }
+
+      // Check that there are no errors.
+      if(empty($data['email_err']) && empty($data['password_err'])){
+        die('SUCCESS!');
+      } else {
+        // Reload with errors displayed.
+        $this->view('users/login', $data);
+      }
+
     } else {
       $data = [
         'email' => '',
