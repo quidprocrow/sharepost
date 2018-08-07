@@ -18,4 +18,7 @@ define('URLROOT', 'http://localhost/traversy/shareposts/');
 // Site name.
 define('SITENAME', 'SharePosts');
 
+// Application version.
+define('APPVERSION', '1.0.0')
+
 ?>
