@@ -1,6 +1,6 @@
 <?php
 
-class Users {
+class Users extends Controller {
   public function __construct(){
 
   }
@@ -10,7 +10,19 @@ class Users {
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
       // If it is a post request, process form.
     } else {
-      echo 'Load form!';
+      $data = [
+        'name' => '',
+        'email' => '',
+        'password' => '',
+        'confirm_password' => '',
+        'name_err' => '',
+        'email_err' => '',
+        'password_err' => '',
+        'confirm_password_err' => ''
+      ];
+
+      // Load the view for registration.
+      $this->view('users/register', $data);
     }
   }
 
