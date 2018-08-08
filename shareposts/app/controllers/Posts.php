@@ -6,10 +6,16 @@ class Posts extends Controller {
       redirect('users/login');
       flash('not_logged_in', 'You must be logged in to view posts.', 'alert alert-danger');
     }
+
+    $this->postModel = $this->model('Post');
   }
 
   public function index(){
-    $data = [];
+
+    $posts = $this->postModel->getPosts();
+    $data = [
+      'posts' => $posts
+    ];
 
     $this->view('posts/index', $data);
   }
