@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-md-6">
       <h1>Posts</h1>
     </div>
@@ -9,6 +9,7 @@
         Add Post
       </a>
     </div>
+    <?php flash('post_message'); ?>
   </div>
 
   <?php foreach($data['posts'] as $post) : ?>
