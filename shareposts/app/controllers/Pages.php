@@ -6,11 +6,15 @@
     }
 
     public function index(){
+      if(isLoggedIn()){
+        redirect('posts/index');
+      }
       $data = [
         'title' => 'Welcome',
         'description' => 'A simple social network built on the Traversy MVC PHP framework.'
       ];
       $this->view('pages/index', $data);
+
     }
 
     public function about(){
