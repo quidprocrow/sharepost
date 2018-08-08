@@ -37,7 +37,6 @@ class Post {
     } else {
       return false;
     }
-
   }
 
   public function getPostById($id){
@@ -48,8 +47,39 @@ class Post {
     $this->db->bind(':id', $id);
     // Get a single row.
     $row = $this->db->single();
-    // Return it. 
+    // Return it.
     return $row;
+  }
+
+  public function updatePost($data){
+    // Prepare statement.
+    $this->db->query('UPDATE posts SET title = :title, body = :body WHERE id = :id');
+
+    // Bind values to named parameters.
+    $this->db->bind(':id', $data['id']);
+    $this->db->bind(':title', $data['title']);
+    $this->db->bind(':body', $data['body']);
+
+    // Execute.
+    if($this->db->execute()){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function deletePost($id){
+    // Prepare query to delete.
+    $this->db->query('DELETE FROM posts WHERE id = :id');
+    // Bind values.
+    $this->db->bind(':id', $id);
+
+    if($this->db->execute()){
+      return true;
+    } else {
+      return false;
+    }
+
   }
 
 }
